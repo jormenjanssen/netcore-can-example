@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.29123.89
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Riwo.Rimote.VirtualCan", "Riwo.Rimote.VirtualCan\Riwo.Rimote.VirtualCan.csproj", "{977CF64D-A38F-47A7-B103-D9BC1BC2C40F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Riwo.Rimote.VirtualCan.Example", "Riwo.Rimote.Example\Riwo.Rimote.VirtualCan.Example.csproj", "{03D1E285-5F06-4913-B733-B69DF2750C77}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riwo.Rimote.VirtualCan.Linux", "..\Riwo.Rimote.VirtualCan.Linux\Riwo.Rimote.VirtualCan.Linux.csproj", "{8BD4082A-F1E2-4978-82D6-7ADF351BD2E4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Riwo.Rimote.VirtualCan.Example", "Riwo.Rimote.VirtualCan.Example\Riwo.Rimote.VirtualCan.Example.csproj", "{5EB92858-446B-44B8-BA54-05827D00465B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{977CF64D-A38F-47A7-B103-D9BC1BC2C40F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{977CF64D-A38F-47A7-B103-D9BC1BC2C40F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{977CF64D-A38F-47A7-B103-D9BC1BC2C40F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{03D1E285-5F06-4913-B733-B69DF2750C77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{03D1E285-5F06-4913-B733-B69DF2750C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{03D1E285-5F06-4913-B733-B69DF2750C77}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{03D1E285-5F06-4913-B733-B69DF2750C77}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8BD4082A-F1E2-4978-82D6-7ADF351BD2E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8BD4082A-F1E2-4978-82D6-7ADF351BD2E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BD4082A-F1E2-4978-82D6-7ADF351BD2E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BD4082A-F1E2-4978-82D6-7ADF351BD2E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EB92858-446B-44B8-BA54-05827D00465B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EB92858-446B-44B8-BA54-05827D00465B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EB92858-446B-44B8-BA54-05827D00465B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EB92858-446B-44B8-BA54-05827D00465B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
