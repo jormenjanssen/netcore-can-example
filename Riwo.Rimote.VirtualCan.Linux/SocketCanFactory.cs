@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Net.Sockets;
-using Riwo.Rimote.SocketCan.Internal;
 using BindingFlags = System.Reflection.BindingFlags;
 
-namespace Riwo.Rimote.SocketCan
+namespace Riwo.Rimote.VirtualCan.Linux
 {
     public sealed class SocketCanFactory
     {

@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Riwo.Rimote.SocketCan.Internal
+namespace Riwo.Rimote.VirtualCan.Linux
 {
     internal static class NativeMethods
     {
@@ -64,21 +64,19 @@ namespace Riwo.Rimote.SocketCan.Internal
             return new IntPtr(socketPtr);
         }
 
-        private static int GetCanInterface(IntPtr socketHandle, string canAdapter)
+        private static int GetCanInterface(IntPtr socketHandle, string adapterName)
         {
-            var deviceNameBytes = Encoding.ASCII.GetBytes(canAdapter);
+            var deviceNameBytes = Encoding.ASCII.GetBytes(adapterName);
             if (deviceNameBytes.Length > 15)
-                throw new InvalidOperationException($"Name too long {nameof(canAdapter)}");
+                throw new ArgumentException($"{nameof(adapterName)} to long should be max 15 chars, canAdapter", adapterName);
 
             // The adapter name should fit in the first 16 bytes
             var ioIn = new byte[32];
             Array.Copy(deviceNameBytes, ioIn, deviceNameBytes.Length);
 
-            var ioOut = new byte[32];
-           
             var result = Ioctl(socketHandle.ToInt32(), Siocgifindex, ioIn);
-            //if (result != 32)
-            //    throw new InvalidOperationException($"IOControl failed (result: {result})");
+            if (result != 32)
+                throw new InvalidOperationException($"IOControl failed (result: {result})");
 
             // The interface is at position 16-19
             return BitConverter.ToInt32(ioIn, 16);
