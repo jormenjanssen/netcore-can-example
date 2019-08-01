@@ -75,7 +75,7 @@ namespace Riwo.Rimote.VirtualCan.Linux
             Array.Copy(deviceNameBytes, ioIn, deviceNameBytes.Length);
 
             var result = Ioctl(socketHandle.ToInt32(), Siocgifindex, ioIn);
-            if (result != 32)
+            if (result != 0)
                 throw new InvalidOperationException($"IOControl failed (result: {result})");
 
             // The interface is at position 16-19

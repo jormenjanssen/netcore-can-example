@@ -4,7 +4,7 @@ using BindingFlags = System.Reflection.BindingFlags;
 
 namespace Riwo.Rimote.VirtualCan.Linux
 {
-    public sealed class SocketCanFactory
+    public sealed class SocketCanFactory : IControllerAreaNetworkInterfaceFactory
     {
         public Socket CreateSocket(string adapterName)
         {
@@ -19,7 +19,7 @@ namespace Riwo.Rimote.VirtualCan.Linux
                 return CreateSocketNetCore2_x(socketType, safeSocketCloseType, adapterName);
 
             // Workaround for .Net core 3.0+
-            var safeSocketHandleType = socketType.Assembly.GetType("SafeSocketHandle");
+            var safeSocketHandleType = socketType.Assembly.GetType("System.Net.Sockets.SafeSocketHandle");
             if (safeSocketHandleType != null)
                 return CreateSocketNetCore3_x(socketType, safeSocketHandleType, adapterName);
 
@@ -47,7 +47,21 @@ namespace Riwo.Rimote.VirtualCan.Linux
 
         private Socket CreateSocketNetCore3_x(Type socketType, Type safeSocketType, string name)
         {
-            throw new PlatformNotSupportedException("NETCore version >= 3 is currently not supported");
+            var socketConstructor = socketType.GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, new[] { safeSocketType }, null);
+            var socketMethod = safeSocketType.GetMethod("CreateSocket", BindingFlags.NonPublic | BindingFlags.Static, null, new[] { typeof(IntPtr) }, null);
+
+            if (socketConstructor == null || socketMethod == null)
+                throw new PlatformNotSupportedException("Failed to create socket on platform missing required constructors");
+
+            // Todo: check cleanup.. when calls below fail
+            var nativeSocket = NativeMethods.CreateCanSocket();
+            var safeSocketHandle = socketMethod.Invoke(null, new object[] { nativeSocket });
+            var socket = (Socket)socketConstructor.Invoke(new[] { safeSocketHandle });
+
+
+            InitializeSocketCanForAdaper(nativeSocket, name);
+
+            return socket;
         }
 
         private void InitializeSocketCanForAdaper(IntPtr socketHandlePtr, string name)
