@@ -14,7 +14,7 @@ namespace Riwo.Rimote.VirtualCan
             get => (FrameBytes[0] << 0) | (FrameBytes[1] << 8) | (FrameBytes[2] << 16) | ((FrameBytes[3] & 0x1F) << 24);
             set
             {
-                FrameBytes[3] = (byte)((FrameBytes[0] & 0xE0) | ((value & 0x1F000000) >> 24));
+                FrameBytes[3] = (byte)((FrameBytes[3] & 0xE0) | ((value & 0x1F000000) >> 24));
                 FrameBytes[2] = (byte)((value & 0x00FF0000) >> 16);
                 FrameBytes[1] = (byte)((value & 0x0000FF00) >> 8);
                 FrameBytes[0] = (byte)(value & 0x000000FF);
