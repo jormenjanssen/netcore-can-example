@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Riwo.Rimote.VirtualCan.Linux\Riwo.Rimote.VirtualCan.Linux.csproj" />
+    <ProjectReference Include="..\Riwo.Rimote.VirtualCan.Linux\Riwo.Rimote.VirtualCan.Linux.csproj" />
     <ProjectReference Include="..\Riwo.Rimote.VirtualCan\Riwo.Rimote.VirtualCan.csproj" />
   </ItemGroup>
 
