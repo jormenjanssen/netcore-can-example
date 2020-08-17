@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\netcore-can-example\Riwo.Rimote.VirtualCan\Riwo.Rimote.VirtualCan.csproj" />
+    <ProjectReference Include="..\Riwo.Rimote.VirtualCan\Riwo.Rimote.VirtualCan.csproj" />
   </ItemGroup>
 
 </Project>
